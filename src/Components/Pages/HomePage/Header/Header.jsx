@@ -1,4 +1,5 @@
 import './Header.css'
+import clockLogo from '../../../../assets/images/clock-logo.png'
 
 const Header = () => {
     return (
@@ -8,6 +9,7 @@ const Header = () => {
             </div>
 
             <div className='middle-section'>
+                <div><img src={clockLogo}/></div>
                 <input/>
             </div>
 

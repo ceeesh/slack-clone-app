@@ -20,4 +20,20 @@
     padding: 2px;
 }
 
+.middle-section img {
+    width: 25px;
+    
+}
+
+.middle-section div {
+    margin-right: 15px;
+    padding: 4px 4px 1px 4px;
+}
+
+.middle-section div:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
