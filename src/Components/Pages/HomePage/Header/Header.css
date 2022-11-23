@@ -1,0 +1,23 @@
+.header-section {
+    height: 55px;
+    width: 100%;
+    background-color: #3d0d42;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,.25);
+}
+
+.middle-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middle-section input{
+    width: 1000px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+
