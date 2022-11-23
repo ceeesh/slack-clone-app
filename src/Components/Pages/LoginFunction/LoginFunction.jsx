@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../../assets/images/slack-logo.svg'
 import './LoginFunction.css'
 import HandleChange from '../../../utils/HandleChange';
+import FetchUtils from '../../../utils/FetchUtils';
 
 const LoginFunction = () => {
     const navigate = useNavigate()
@@ -16,28 +17,16 @@ const LoginFunction = () => {
     })
     const { email, password } = userData
 
-    const fetchLogin = async () => {
-        const config = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }
-        const res = await fetch(`${APIurl}/auth/sign_in`, config)
-        if (res.status === 200) {
-            // setLoginInfoHeader({
-            //     'access-token': res.headers.get('access-token'),
-            //     client: res.headers.get('client'),
-            //     expiry: res.headers.get('expiry'),
-            //     uid: res.headers.get('uid')
-            // });
+    
 
-            navigate('/Homepage')
-        }
-        
-        const data = await res.json()
-        console.log(data)
-    }
-
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault()
-        fetchLogin()
-        
+        const data = await FetchUtils('/auth/sign_in', 'POST', userData)
+        if(!data) {
+            console.log('something wrong')
+            return
+        }
+        navigate('/Homepage')
     }
 
     return (
