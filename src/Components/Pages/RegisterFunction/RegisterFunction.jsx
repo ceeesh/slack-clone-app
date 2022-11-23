@@ -2,11 +2,12 @@ import './RegisterFunction.css'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import  HandleChange  from '../../../utils/HandleChange';
+import logo from '../../../assets/images/slack-logo.svg'
+import FetchUtils from '../../../utils/FetchUtils';
 
 const RegisterFunction = () => {
 
     const navigate = useNavigate()
-    const APIurl = 'http://206.189.91.54/api/v1/auth'
     const [userInput, setUserInput] = useState({
         email: '',
         password: '',
@@ -15,21 +16,17 @@ const RegisterFunction = () => {
 
     const { email, password, password_confirmation } = userInput
 
-    const fetchRegisterAccount = async (userInput) => {
-        const config = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userInput) }
-        const res = await fetch(`${APIurl}`, config)
-        const data = await res.json()
 
-        if(res.status === 200) {
+    const onSubmit = async (e) => {
+        e.preventDefault()
+        const data = await FetchUtils('/auth/', 'POST', userInput)
+        if(!data) {
+            console.log('something wrong')
+            return
+        }else {
             navigate('/')
         }
-        console.log(res)
-        console.log(data)
-    }
-
-    const onSubmit = (e) => {
-        e.preventDefault()
-        fetchRegisterAccount(userInput)
+        
     }
 
     return (
@@ -37,6 +34,7 @@ const RegisterFunction = () => {
             <form className='create-account-section' onSubmit={onSubmit}>
 
                 <div className='title-section'>
+                <img src={logo} /><p>slack</p>
                     <h1>Create a new account</h1>
                 </div>
 

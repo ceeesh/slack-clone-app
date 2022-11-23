@@ -7,7 +7,7 @@
 .create-account-section {
     width: 100%;
     max-width: 400px;
-    margin: 250px auto;
+    margin: 180px auto;
     font-family: 'Noto Sans', sans-serif;
     color: white;
     display: flex;
@@ -17,8 +17,22 @@
     border-radius: 10px;
 }
 
+.title-section {
+    text-align: center;
+}
+
 .title-section h1{
     font-size: 35px;
+}
+
+.title-section img {
+    width: 75px;
+}
+
+.title-section p {
+    display: inline-block;
+    font-size: 45px;
+    font-weight: 1000;
 }
 
 .inner-form-section {
