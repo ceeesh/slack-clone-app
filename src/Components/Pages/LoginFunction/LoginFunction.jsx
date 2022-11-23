@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom'
 import logo from '../../../assets/images/slack-logo.svg'
 import './LoginFunction.css'
+import HandleChange from '../../../utils/HandleChange';
 
 const LoginFunction = () => {
     const navigate = useNavigate()
@@ -14,15 +15,6 @@ const LoginFunction = () => {
         password: '',
     })
     const { email, password } = userData
-
-    const handleChangeEmail = (event) => {
-        const { name, value } = event.target
-        setUserData({ ...userData, [name]: value })
-    }
-    const handleChangePassword = (event) => {
-        const { name, value } = event.target
-        setUserData({ ...userData, [name]: value })
-    }
 
     const fetchLogin = async () => {
         const config = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userData) }
@@ -64,7 +56,7 @@ const LoginFunction = () => {
                         name='email'
                         placeholder='name@work-email.com'
                         value={email}
-                        onChange={handleChangeEmail}
+                        onChange={(e) => HandleChange(e, setUserData)}
                     />
 
                     <label>Password</label>
@@ -73,7 +65,7 @@ const LoginFunction = () => {
                         name='password'
                         placeholder='Your password'
                         value={password}
-                        onChange={handleChangePassword}
+                        onChange={(e) => HandleChange(e, setUserData)}
                     />
 
                     <button>Sign In</button>

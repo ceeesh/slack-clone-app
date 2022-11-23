@@ -1,6 +1,7 @@
 import './RegisterFunction.css'
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import  HandleChange  from '../../../utils/HandleChange';
 
 const RegisterFunction = () => {
 
@@ -13,19 +14,6 @@ const RegisterFunction = () => {
     });
 
     const { email, password, password_confirmation } = userInput
-
-    const handleChangeEmail = (event) => {
-        const { name, value } = event.target
-        setUserInput({ ...userInput, [name]: value })
-    }
-    const handleChangePassword = (event) => {
-        const { name, value } = event.target
-        setUserInput({ ...userInput, [name]: value })
-    }
-    const handleChangeConfirmPassword = (event) => {
-        const { name, value } = event.target
-        setUserInput({ ...userInput, [name]: value })
-    }
 
     const fetchRegisterAccount = async (userInput) => {
         const config = { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(userInput) }
@@ -59,7 +47,7 @@ const RegisterFunction = () => {
                         name='email'
                         placeholder='name@work-email.com'
                         value={email}
-                        onChange={handleChangeEmail}
+                        onChange={(e) => HandleChange(e, setUserInput)}
                     />
 
                     <label>Password</label>
@@ -68,7 +56,7 @@ const RegisterFunction = () => {
                         name='password'
                         placeholder='Your password'
                         value={password}
-                        onChange={handleChangePassword}
+                        onChange={(e) => HandleChange(e, setUserInput)}
                     />
 
                     <label>Confirm Password</label>
@@ -77,7 +65,7 @@ const RegisterFunction = () => {
                         name='password_confirmation'
                         placeholder='Confirm Password'
                         value={password_confirmation}
-                        onChange={handleChangeConfirmPassword}
+                        onChange={(e) => HandleChange(e, setUserInput)}
                     />
 
                     <button>Sign Up</button>
