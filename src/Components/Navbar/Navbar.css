@@ -3,3 +3,13 @@
     width: 250px;
     background-color: #501657;
 }
+
+.channel-section > div{
+    display: flex;
+    
+}
+
+.channel-list {
+    display: flex;
+    flex-direction: column;
+}
