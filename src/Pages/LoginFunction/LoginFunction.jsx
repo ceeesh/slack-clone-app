@@ -8,8 +8,7 @@ import FetchUtils from "../../utils/FetchUtils";
 
 const LoginFunction = () => {
 	const navigate = useNavigate();
-	const { loginInfo, loginInfoHeader, updateLoginInfo, updateLoginInfoHeader } =
-		useContext(UserContext);
+	const { loginInfo, loginInfoHeader, updateLoginInfo, updateLoginInfoHeader } = useContext(UserContext);
 	const [userData, setUserData] = useState({
 		email: "",
 		password: "",
@@ -19,6 +18,7 @@ const LoginFunction = () => {
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		updateLoginInfo(userData);
+		// console.log(loginInfo)
 		const data = await FetchUtils("/auth/sign_in", "POST", userData);
 
 		if (!data) {
