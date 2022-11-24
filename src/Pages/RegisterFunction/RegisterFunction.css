@@ -1,0 +1,60 @@
+.create-account-section {
+	width: 100%;
+	max-width: 400px;
+
+	font-family: "Noto Sans", sans-serif;
+	display: flex;
+	flex-direction: column;
+	padding: 2rem;
+	border-radius: 10px;
+}
+
+.title-section {
+	text-align: center;
+}
+
+.title-section h1 {
+	font-size: 35px;
+}
+
+.title-section img {
+	width: 75px;
+}
+
+.title-section p {
+	display: inline-block;
+	font-size: 45px;
+	font-weight: 1000;
+}
+
+.inner-form-section label {
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.inner-form-section input {
+	width: 100%;
+	padding: 12px;
+	border-radius: 5px;
+	border: 1px solid rgb(143, 141, 141);
+	margin-bottom: 15px;
+}
+
+.inner-form-section button {
+	width: 100%;
+	margin-top: 15px;
+	padding: 12px;
+	background-color: #4e1455;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.navigate-login-section {
+	margin-top: 15px;
+}
+
+.navigate-login-section span {
+	color: rgb(82, 82, 226);
+	cursor: pointer;
+}
