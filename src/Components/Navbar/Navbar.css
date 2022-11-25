@@ -2,11 +2,11 @@
     height: 100vh;
     width: 250px;
     background-color: #501657;
+    position: fixed;
 }
 
 .channel-section > div{
     display: flex;
-    
 }
 
 .channel-list {

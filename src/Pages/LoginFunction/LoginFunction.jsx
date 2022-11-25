@@ -1,31 +1,41 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 import logo from "../../assets/images/slack-logo.svg";
 import "./LoginFunction.css";
 import HandleChange from "../../utils/HandleChange";
+import ErrorHandler from "../../utils/ErrorHandler";
 import FetchUtils from "../../utils/FetchUtils";
+import { logIn } from "../../utils/api"
 
 const LoginFunction = () => {
 	const navigate = useNavigate();
-	const { loginInfo, loginInfoHeader, updateLoginInfo, updateLoginInfoHeader } = useContext(UserContext);
+	const { loginInfo, loginInfoHeader, updateLoginInfo, updateLoginInfoHeader, setLoginInfoHeader } = useContext(UserContext);
 	const [userData, setUserData] = useState({
 		email: "",
 		password: "",
 	});
+
 	const { email, password } = userData;
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
 		updateLoginInfo(userData);
-		// console.log(loginInfo)
-		const data = await FetchUtils("/auth/sign_in", "POST", userData);
 
-		if (!data) {
-			return;
-		}
+		logIn(userData)
+			.then(res => {
+				updateLoginInfoHeader({
+					'access-token': res.headers.get('access-token'),
+					client: res.headers.get('client'),
+					expiry: res.headers.get('expiry'),
+					uid: res.headers.get('uid')
+				})
+				navigate("/Homepage");
+			}).catch(err => {
+				console.log(err.response.data.errors)
+				ErrorHandler(err.response.data.errors);
+			});
 
-		navigate("/Homepage");
 	};
 
 	return (

@@ -3,6 +3,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import HandleChange from "../../utils/HandleChange";
 import logo from "../../assets/images/slack-logo.svg";
+import { registerAcc } from "../../utils/api"
+import ErrorHandler from "../../utils/ErrorHandler";
 import FetchUtils from "../../utils/FetchUtils";
 
 const RegisterFunction = () => {
@@ -17,13 +19,13 @@ const RegisterFunction = () => {
 
 	const onSubmit = async (e) => {
 		e.preventDefault();
-		const data = await FetchUtils("/auth/", "POST", userInput);
-
-		if (!data) {
-			return;
-		}
-
-		navigate("/");
+		registerAcc(userInput)
+			.then(res => {
+				navigate("/");
+			}).catch(err => {
+				console.log(err.response.data.errors.full_messages)
+				ErrorHandler(err.response.data.errors.full_messages || err.response.data.errors);
+			})
 	};
 
 	return (

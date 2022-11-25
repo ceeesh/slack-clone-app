@@ -1,0 +1,23 @@
+.chat-box-container {
+    border: 1px solid red;
+    height: 882px;
+    max-height: 885px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 250px;
+}
+
+.send-section {
+    width: 100%;
+}
+
+.send-section input {
+    width: 90%;
+    padding: 15px;
+    border: 1px solid gainsboro;
+}
+
+.send-section button {
+    width: 150px;
+}
