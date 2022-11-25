@@ -23,7 +23,7 @@ const Navbar = () => {
 
         <div className='channel-section'>
           <div>
-            <button onClick={channelToggle}>toggle</button>
+            <button className="btn" onClick={channelToggle}>toggle</button>
             <h3>Channels</h3>
             <button>+</button>
           </div>
@@ -45,7 +45,7 @@ const Navbar = () => {
 
         <div className='channel-section'>
           <div>
-            <button onClick={msgToggle}>toggle</button>
+            <button className="btn" onClick={msgToggle}>toggle</button>
             <h3>Direct messages</h3>
             <button>+</button>
           </div>
