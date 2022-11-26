@@ -25,18 +25,18 @@ const LoginFunction = () => {
 		logIn(userData)
 			.then(res => {
 				updateLoginInfoHeader({
-					'access-token': res.headers.get('access-token'),
+					"access-token": res.headers.get('access-token'),
 					client: res.headers.get('client'),
 					expiry: res.headers.get('expiry'),
 					uid: res.headers.get('uid')
 				})
 				navigate("/Homepage");
 			}).catch(err => {
-				console.log(err.response.data.errors)
 				ErrorHandler(err.response.data.errors);
 			});
 
 	};
+	console.log(loginInfoHeader)
 
 	return (
 		<div className="min-h-[100vh] grid place-items-center">

@@ -1,0 +1,15 @@
+.icons-container {
+    display: inline-block;
+    margin: 5px 15px;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.icons-container:hover {
+    background-color: rgba(88, 84, 84, 0.5)
+}
+
+.icons-container img {
+    width: 12px;
+}
