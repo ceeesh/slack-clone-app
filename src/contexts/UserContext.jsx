@@ -4,8 +4,9 @@ export let UserContext = createContext({});
 
 export const UserContextProvider = ({ children }) => {
 
-  const [loginInfo, setLoginInfo] = useState(sessionStorage.getItem("loginInfo") === null ? {} : JSON.parse(sessionStorage.getItem("loginInfo")));
-  const [loginInfoHeader, setLoginInfoHeader] = useState(sessionStorage.getItem("loginHeaders") === null ? {} : JSON.parse(sessionStorage.getItem("loginHeaders")));
+  const [loginInfo, setLoginInfo] = useState(!sessionStorage.getItem("loginInfo") ? {} : JSON.parse(sessionStorage.getItem("loginInfo")));
+  const [loginInfoHeader, setLoginInfoHeader] = useState(!sessionStorage.getItem("loginHeaders") ? {} : JSON.parse(sessionStorage.getItem("loginHeaders")));
+  const [channels, setChannels] = useState('');
 
   const updateLoginInfo = (info) => {
     sessionStorage.setItem('loginInfo', JSON.stringify(info))
@@ -18,7 +19,7 @@ export const UserContextProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={{ loginInfo, setLoginInfo, loginInfoHeader, setLoginInfoHeader, updateLoginInfo, updateLoginInfoHeader}}>
+    <UserContext.Provider value={{ loginInfo, setLoginInfo, loginInfoHeader, setLoginInfoHeader, updateLoginInfo, updateLoginInfoHeader, channels, setChannels }}>
       {children}
     </UserContext.Provider>
   )

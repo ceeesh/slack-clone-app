@@ -1,10 +1,12 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
+import { UserContext } from '../../contexts/UserContext';
 import './Navbar.css'
 
 const Navbar = () => {
 
   const [channelsNavToggle, setChannelsNavToggle] = useState(true);
   const [directMsgToggle, setDirectMsgToggle] = useState(true);
+  const { channels } = useContext(UserContext)
 
   const channelToggle = () => {
     setChannelsNavToggle(prevChannelsNavToggle => !prevChannelsNavToggle)
@@ -23,19 +25,22 @@ const Navbar = () => {
 
         <div className='channel-section'>
           <div>
-            <button className="btn" onClick={channelToggle}>toggle</button>
+          <i class={channelsNavToggle ? "fa-solid fa-caret-down" : "fa-solid fa-caret-down right"}  aria-hidden="true" onClick={channelToggle}></i>
+            
             <h3>Channels</h3>
             <button>+</button>
           </div>
-          {channelsNavToggle ? 
+          {channelsNavToggle ?
             <div className='channel-list'>
-              <h1>TEMP CHANNEL 1</h1>
-              <h1>TEMP CHANNEL 2</h1>
-              <h1>TEMP CHANNEL 3</h1>
-              <h1>TEMP CHANNEL 4</h1>
-              <h1>TEMP CHANNEL 5</h1>
+              {channels.length > 0 && channels.map((channel, i) => {
+                return (
+                  <div key={i}>
+                  <div>{channel.name}</div>
+                  </div>
+                )
+              })}
             </div>
-          : ''}
+            : null}
         </div>
 
 
@@ -45,11 +50,11 @@ const Navbar = () => {
 
         <div className='channel-section'>
           <div>
-            <button className="btn" onClick={msgToggle}>toggle</button>
+          <i class={directMsgToggle ? "fa-solid fa-caret-down" : "fa-solid fa-caret-down right"} aria-hidden="true" onClick={msgToggle}></i>
             <h3>Direct messages</h3>
             <button>+</button>
           </div>
-          {directMsgToggle ? 
+          {directMsgToggle ?
             <div className='channel-list'>
               <h1>TEMP MSG 1</h1>
               <h1>TEMP MSG 2</h1>
@@ -57,7 +62,7 @@ const Navbar = () => {
               <h1>TEMP MSG 4</h1>
               <h1>TEMP MSG 5</h1>
             </div>
-          : ''}
+            : ''}
         </div>
 
 
