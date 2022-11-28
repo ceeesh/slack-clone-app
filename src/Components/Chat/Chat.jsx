@@ -34,9 +34,9 @@ const Chatbox = () => {
 		setChatData(data.data);
 	}
 
-	async function getMessages() {
+	async function getMessages(id) {
 		const data = await FetchUtils(
-			`/messages?receiver_id=${activeChannel}&receiver_class=Channel`,
+			`/messages?receiver_id=${id ? id : activeChannel}&receiver_class=Channel`,
 			"GET",
 			null,
 			{
@@ -70,11 +70,12 @@ const Chatbox = () => {
 		getMessages();
 	}
 
-	useEffect(() => {
-		socket.on("get_chat", (data) => {
-			getMessages();
-		});
-	}, [socket]);
+	socket.on("get_chat", (data) => {
+		if (chatData && chatData.id.toString() === data.channel.toString()) {
+			console.log(activeChannel, data.channel);
+			getMessages(chatData.id);
+		}
+	});
 
 	useEffect(() => {
 		if (!activeChannel) {
