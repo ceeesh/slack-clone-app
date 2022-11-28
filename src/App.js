@@ -8,7 +8,6 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
 	return (
 		<Layout>
 			<UserContextProvider>
@@ -17,8 +16,8 @@ function App() {
 					<Route path="/Register" element={<RegisterFunction />} />
 					<Route path="/Homepage" element={<Homepage />} />
 				</Routes>
+				<ToastContainer />
 			</UserContextProvider>
-			<ToastContainer />
 		</Layout>
 	);
 }
