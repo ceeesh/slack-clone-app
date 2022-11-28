@@ -1,11 +1,13 @@
 import ErrorHandler from "./ErrorHandler";
 
-const FetchUtils = async (url, method, data) => {
+const FetchUtils = async (url, method, data, headers) => {
 	try {
 		const APIurl = "http://206.189.91.54/api/v1" + url;
 		const config = {
 			method: method,
-			headers: { "Content-Type": "application/json" },
+			headers: !headers
+				? { "Content-Type": "application/json" }
+				: { ...headers, "Content-Type": "application/json" },
 			body: data ? JSON.stringify(data) : null,
 		};
 

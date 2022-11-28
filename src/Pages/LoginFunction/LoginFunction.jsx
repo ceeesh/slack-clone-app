@@ -6,11 +6,18 @@ import "./LoginFunction.css";
 import HandleChange from "../../utils/HandleChange";
 import ErrorHandler from "../../utils/ErrorHandler";
 import FetchUtils from "../../utils/FetchUtils";
-import { logIn } from "../../utils/api"
+import { logIn } from "../../utils/api";
 
 const LoginFunction = () => {
 	const navigate = useNavigate();
-	const { loginInfo, loginInfoHeader, updateLoginInfo, updateLoginInfoHeader, setLoginInfoHeader } = useContext(UserContext);
+	const {
+		loginInfo,
+		loginInfoHeader,
+		updateLoginInfo,
+		updateLoginInfoHeader,
+		setLoginInfoHeader,
+		setID,
+	} = useContext(UserContext);
 	const [userData, setUserData] = useState({
 		email: "",
 		password: "",
@@ -23,20 +30,22 @@ const LoginFunction = () => {
 		updateLoginInfo(userData);
 
 		logIn(userData)
-			.then(res => {
+			.then((res) => {
+				console.log(res);
 				updateLoginInfoHeader({
-					"access-token": res.headers.get('access-token'),
-					client: res.headers.get('client'),
-					expiry: res.headers.get('expiry'),
-					uid: res.headers.get('uid')
-				})
+					"access-token": res.headers.get("access-token"),
+					client: res.headers.get("client"),
+					expiry: res.headers.get("expiry"),
+					uid: res.headers.get("uid"),
+				});
+				setID(res.data.data.id);
 				navigate("/Homepage");
-			}).catch(err => {
+			})
+			.catch((err) => {
 				ErrorHandler(err.response.data.errors);
 			});
-
 	};
-	console.log(loginInfoHeader)
+	console.log(loginInfoHeader);
 
 	return (
 		<div className="min-h-[100vh] grid place-items-center">
