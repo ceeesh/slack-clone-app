@@ -93,7 +93,6 @@ const Navbar = () => {
 								{channels &&
 									channels.length > 0 &&
 									channels.map((channel, i) => {
-										console.log(channel);
 										return (
 											<button
 												className="btn btn-ghost"
