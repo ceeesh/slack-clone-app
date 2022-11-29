@@ -4,10 +4,17 @@ import Chat from "../../Components/Chat/Chat";
 import { retrieveChannels } from "../../utils/api";
 import { UserContext } from "../../contexts/UserContext";
 import "./Homepage.css";
+import FetchUtils from "../../utils/FetchUtils";
 import { useState, useContext, useEffect } from "react";
 
 const Homepage = () => {
-	const { loginInfoHeader, updateChannels, channels, setChannels } = useContext(UserContext);
+	const { loginInfoHeader, updateChannels, channels, setChannels, users, setUsers } = useContext(UserContext);
+
+	const getUsers = async () => {
+		const data = await FetchUtils("/users", "GET", null, { ...loginInfoHeader })
+		setUsers(data.data)
+		console.log(users)
+	}
 
 	useEffect(() => {
 		retrieveChannels(loginInfoHeader)
@@ -17,6 +24,7 @@ const Homepage = () => {
 			.catch((err) => {
 				console.log(err);
 			});
+			getUsers()
 	}, [loginInfoHeader]);
 
 	return (

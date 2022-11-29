@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import SeachBar from "../SearchBar/SeachBar";
 import "./Header.css";
 
 const Header = () => {
@@ -45,7 +46,7 @@ const Header = () => {
 						/>
 					</svg>
 				</button>
-				<input className="input input-bordered w-[50rem] h-[2rem]" type="text" />
+				<SeachBar />
 			</div>
 
 			<div className="w-min h-min">

@@ -101,7 +101,7 @@ const Chatbox = () => {
 						</div>
 					</div>
 
-					<div className="chat-section h-[60vh] overflow-auto w-full flex flex-col p-5">
+					<div className="chat-section h-[70vh] overflow-auto w-full flex flex-col p-5">
 						{msgData &&
 							msgData.map((msg) => (
 								<>
@@ -129,7 +129,7 @@ const Chatbox = () => {
 						<div ref={chatRef}></div>
 					</div>
 
-					<div className="chat-form bottom-[0] w-[70rem]">
+					<div className="chat-form bottom-[0] w-[97%]">
 						<form className="" onSubmit={submitHandler}>
 							<ChatIcons icon={boldIcon} />
 							<ChatIcons icon={italic} />

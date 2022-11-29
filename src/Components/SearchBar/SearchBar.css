@@ -1,0 +1,35 @@
+.searchInputs {
+  display: flex;
+}
+
+.userResult {
+  position: absolute;
+  top: 45px;
+  margin-top: 5px;
+  height: 200px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  overflow: hidden;
+  overflow-y: auto;
+  cursor: pointer;
+}
+
+.userResult .userItem {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.userResult::-webkit-scrollbar {
+    display: none;
+  }
+
+.userItem {
+  margin-left: 10px;
+}
+
+.userItem:hover {
+  background-color: lightgrey;
+}
