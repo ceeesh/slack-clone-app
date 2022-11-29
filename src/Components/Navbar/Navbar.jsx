@@ -54,14 +54,14 @@ const Navbar = () => {
 	return (
 		<>
 			<div className="navbar-container text-white">
-				<h1>Welcome,{loginInfoHeader && loginInfoHeader.uid.split("@")[0]}</h1>
+				<h1 className="border-b p-4 nav-header">Welcome, {loginInfoHeader && loginInfoHeader.uid.split("@")[0].toUpperCase()}</h1>
 
 				<div className="nav-list">
 					<div className="channel-section">
 						<div className="text-white flex justify-between items-center">
 							<div className="flex gap-2">
 								<i
-									class={
+									className={
 										channelsNavToggle ? "fa-solid fa-caret-down" : "fa-solid fa-caret-down right"
 									}
 									aria-hidden="true"
@@ -119,11 +119,11 @@ const Navbar = () => {
 					<div className="channel-section">
 						<div>
 							<i
-								class={directMsgToggle ? "fa-solid fa-caret-down" : "fa-solid fa-caret-down right"}
+								className={directMsgToggle ? "fa-solid fa-caret-down" : "fa-solid fa-caret-down right"}
 								aria-hidden="true"
 								onClick={msgToggle}
 							></i>
-							<h3>Direct messages</h3>
+							<h3 className="font-bold text-lg">Direct messages</h3>
 							<button>+</button>
 						</div>
 						{directMsgToggle ? <div className="channel-list"></div> : ""}

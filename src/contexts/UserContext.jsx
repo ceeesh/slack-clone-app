@@ -17,6 +17,8 @@ export const UserContextProvider = ({ children }) => {
 
 	const [id, setID] = useState("");
 
+	const [users, setUsers] = useState("")
+
 	const updateLoginInfo = (info) => {
 		sessionStorage.setItem("loginInfo", JSON.stringify(info));
 		setLoginInfo(info);
@@ -42,6 +44,8 @@ export const UserContextProvider = ({ children }) => {
 				setID,
 				activeChannel,
 				setActiveChannel,
+				users,
+				setUsers
 			}}
 		>
 			{children}

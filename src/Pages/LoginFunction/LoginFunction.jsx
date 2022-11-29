@@ -31,7 +31,6 @@ const LoginFunction = () => {
 
 		logIn(userData)
 			.then((res) => {
-				console.log(res);
 				updateLoginInfoHeader({
 					"access-token": res.headers.get("access-token"),
 					client: res.headers.get("client"),
@@ -45,7 +44,6 @@ const LoginFunction = () => {
 				ErrorHandler(err.response.data.errors);
 			});
 	};
-	console.log(loginInfoHeader);
 
 	return (
 		<div className="min-h-[100vh] grid place-items-center">
