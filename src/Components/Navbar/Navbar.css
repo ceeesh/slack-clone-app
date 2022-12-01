@@ -26,6 +26,11 @@
     transform: rotate(-90deg);
 }
 
-.nav-header {
+.nav-header, .navbar-options {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.navbar-items:hover {
+    opacity: 0.9;
+    background-color: #340e36;
 }

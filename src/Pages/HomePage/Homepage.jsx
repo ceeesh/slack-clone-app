@@ -13,7 +13,6 @@ const Homepage = () => {
 	const getUsers = async () => {
 		const data = await FetchUtils("/users", "GET", null, { ...loginInfoHeader })
 		setUsers(data.data)
-		console.log(users)
 	}
 
 	useEffect(() => {
