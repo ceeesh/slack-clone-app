@@ -26,6 +26,15 @@
     transform: rotate(-90deg);
 }
 
+.fa-pencil-alt {
+    color: #3d0d42;
+    font-size: 18px;
+    border-radius: 50%;
+    padding: 6px;
+    margin-left: 60px;
+    cursor: pointer; 
+}
+
 .nav-header, .navbar-options {
     border-bottom: 1px solid rgba(255, 255, 255, 0.25);
 }

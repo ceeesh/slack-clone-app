@@ -34,6 +34,10 @@ const Navbar = () => {
 		setDirectMsgToggle((prevDirectMsgToggle) => !prevDirectMsgToggle);
 	};
 
+	const notYetAdded = () => {
+		alert("this feature is under development");
+	  };
+
 	async function submitHandler(e) {
 		e.preventDefault();
 
@@ -63,16 +67,19 @@ const Navbar = () => {
 	return (
 		<>
 			<div className="navbar-container text-white overflow-auto">
-				<h1 className="p-4 nav-header">Welcome, {loginInfoHeader && loginInfoHeader.uid.split("@")[0].toUpperCase()}</h1>
+
+				<h1 className="p-4 nav-header">Welcome, {loginInfoHeader && loginInfoHeader.uid.split("@")[0].toUpperCase()} 
+				<span className="fa fa-pencil-alt bg-white" onClick={notYetAdded}></span>
+				</h1>
 
 				<div className="nav-list">
-					<div className="flex flex-col navbar-options py-4">
-						<NavbarOptions Icon={RiMenu2Line} title="All unreads"/>
-						<NavbarOptions Icon={RiQuestionAnswerLine} title="Threads"/>
-						<NavbarOptions Icon={RiChat1Line} title="All DMs"/>
-						<NavbarOptions Icon={RiAtLine} title="Mentions & reactions"/>
-						<NavbarOptions Icon={RiBookmarkLine} title="Saved Items"/>
-						<NavbarOptions Icon={RiMore2Fill} title="More"/>
+					<div className="flex flex-col navbar-options py-4" onClick={notYetAdded}>
+						<NavbarOptions Icon={RiMenu2Line} title="All unreads" />
+						<NavbarOptions Icon={RiQuestionAnswerLine} title="Threads" />
+						<NavbarOptions Icon={RiChat1Line} title="All DMs" />
+						<NavbarOptions Icon={RiAtLine} title="Mentions & reactions" />
+						<NavbarOptions Icon={RiBookmarkLine} title="Saved Items" />
+						<NavbarOptions Icon={RiMore2Fill} title="More" />
 					</div>
 					<div className="channel-section">
 						<div className="text-white flex justify-between items-center">
