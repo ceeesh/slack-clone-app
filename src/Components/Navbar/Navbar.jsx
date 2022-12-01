@@ -5,6 +5,15 @@ import FetchUtils from "../../utils/FetchUtils";
 import "./Navbar.css";
 import { toast } from "react-toastify";
 import io from "socket.io-client";
+import NavbarOptions from "./NavbarOptions";
+import {
+	RiMenu2Line,
+	RiQuestionAnswerLine,
+	RiChat1Line,
+	RiAtLine,
+	RiBookmarkLine,
+	RiMore2Fill
+} from "react-icons/ri";
 
 const socket = io.connect("http://localhost:8080");
 
@@ -15,7 +24,7 @@ const Navbar = () => {
 	const { channels, loginInfoHeader, id, setChannels, setActiveChannel, activeChannel } =
 		useContext(UserContext);
 
-	useEffect(() => {});
+	useEffect(() => { });
 
 	const channelToggle = () => {
 		setChannelsNavToggle((prevChannelsNavToggle) => !prevChannelsNavToggle);
@@ -53,10 +62,18 @@ const Navbar = () => {
 
 	return (
 		<>
-			<div className="navbar-container text-white">
-				<h1 className="border-b p-4 nav-header">Welcome, {loginInfoHeader && loginInfoHeader.uid.split("@")[0].toUpperCase()}</h1>
+			<div className="navbar-container text-white overflow-auto">
+				<h1 className="p-4 nav-header">Welcome, {loginInfoHeader && loginInfoHeader.uid.split("@")[0].toUpperCase()}</h1>
 
 				<div className="nav-list">
+					<div className="flex flex-col navbar-options py-4">
+						<NavbarOptions Icon={RiMenu2Line} title="All unreads"/>
+						<NavbarOptions Icon={RiQuestionAnswerLine} title="Threads"/>
+						<NavbarOptions Icon={RiChat1Line} title="All DMs"/>
+						<NavbarOptions Icon={RiAtLine} title="Mentions & reactions"/>
+						<NavbarOptions Icon={RiBookmarkLine} title="Saved Items"/>
+						<NavbarOptions Icon={RiMore2Fill} title="More"/>
+					</div>
 					<div className="channel-section">
 						<div className="text-white flex justify-between items-center">
 							<div className="flex gap-2">

@@ -4,9 +4,8 @@ import { UserContext } from "../../contexts/UserContext";
 
 const SeachBar = () => {
 
-  const { users } = useContext(UserContext);
+  const { users, selectedUser, setSelectedUser } = useContext(UserContext);
   const [filteredUsers, setFilteredUsers] = useState([]);
-  const [selected, setSelected] = useState('')
 
   const handleFilter = (e) => {
     const searchWord = e.target.value;
@@ -19,14 +18,15 @@ const SeachBar = () => {
     } else {
       setFilteredUsers(newFilter)
     }
-    console.log(newFilter)
-    console.log(filteredUsers)
   }
 
   const handleSelected = (e) => {
-    console.log(e.target.textContent)
-    setSelected(e.target.textContent)
     
+    setSelectedUser(e.target.innerText)
+    if(selectedUser){
+      setFilteredUsers([])
+    }
+
   }
 
   return (
@@ -35,7 +35,6 @@ const SeachBar = () => {
       <div className="searchInputs">
         <input
           type='text'
-          // value={selected}
           placeholder='Search for your sadboi colleague'
           className="input input-bordered w-[50rem] h-[2rem]"
           onChange={handleFilter}

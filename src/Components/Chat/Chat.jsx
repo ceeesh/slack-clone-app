@@ -19,7 +19,7 @@ import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:8080");
 
-const Chatbox = () => {
+const Chat = () => {
 	const { activeChannel, loginInfoHeader } = useContext(UserContext);
 	const chatRef = useRef();
 	const [chatData, setChatData] = useState();
@@ -45,7 +45,6 @@ const Chatbox = () => {
 		);
 
 		setMsgData(data.data);
-
 		setTimeout(() => {
 			chatRef.current.scrollIntoView({ behavior: "smooth" });
 		}, 600);
@@ -92,9 +91,9 @@ const Chatbox = () => {
 				<>
 					<div className="w-full bg-gray-100 p-2 shadow-lg">
 						<div className="flex gap-3 items-center">
-							<div class="avatar placeholder">
-								<div class="bg-primary text-neutral-content rounded-full w-[3rem]">
-									<span class="text-xl">{chatData.name.charAt(0)}</span>
+							<div className="avatar placeholder">
+								<div className="bg-primary text-neutral-content rounded-full w-[3rem]">
+									<span className="text-xl">{chatData.name.charAt(0)}</span>
 								</div>
 							</div>
 							<h1 className="font-semibold">{chatData.name}</h1>
@@ -111,13 +110,13 @@ const Chatbox = () => {
 										}`}
 									>
 										<div className="chat-image avatar">
-											<div class="avatar placeholder">
+											<div className="avatar placeholder">
 												<div
-													class={`${
+													className={`${
 														msg.sender.email === loginInfoHeader.uid ? "bg-primary" : "bg-gray-400"
 													} text-neutral-content rounded-full w-[3rem]`}
 												>
-													<span class="text-xl">{msg.sender.email.charAt(0)}</span>
+													<span className="text-xl">{msg.sender.email.charAt(0)}</span>
 												</div>
 											</div>
 										</div>
@@ -130,7 +129,7 @@ const Chatbox = () => {
 					</div>
 
 					<div className="chat-form bottom-[0] w-[97%]">
-						<form className="" onSubmit={submitHandler}>
+						<form onSubmit={submitHandler}>
 							<ChatIcons icon={boldIcon} />
 							<ChatIcons icon={italic} />
 							<ChatIcons icon={strikeThrough} />
@@ -158,4 +157,4 @@ const Chatbox = () => {
 	);
 };
 
-export default Chatbox;
+export default Chat;
